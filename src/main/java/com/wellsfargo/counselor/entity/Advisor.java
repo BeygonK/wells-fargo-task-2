@@ -1,5 +1,6 @@
 package com.wellsfargo.counselor.entity;
 
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,8 +29,11 @@ public class Advisor {
     @Column(nullable = false)
     private String email;
 
-    protected Advisor() {
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime createdAt;
 
+    protected Advisor() {
+        // Default constructor
     }
 
     public Advisor(String firstName, String lastName, String address, String phone, String email) {
@@ -82,5 +86,9 @@ public class Advisor {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 }
